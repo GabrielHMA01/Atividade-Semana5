@@ -27,7 +27,7 @@ a) Imprime os números pares de 1 a 10.
 
 b) Imprime os números ímpares de 1 a 10.
 
-c) Imprime os números pares de 2 a 10.
+**c) Imprime os números pares de 2 a 10.** // Correta
 
 d) Imprime os números ímpares de 2 a 10.
 
@@ -39,7 +39,7 @@ ______
 
 No lugar onde está escrito “// linha” qual das opções abaixo deve estar para funcionar corretamente o código?
 
-A) let carro = new Carro("Toyota");
+**A) let carro = new Carro("Toyota");** //Correto
 
 B) let ligar = new ligar("Toyota");
 
@@ -55,7 +55,7 @@ ______
 
 Escolha a opção que responde corretamente:
 
-A) 18
+**A) 18** //Correta
 
 B) 16
 
@@ -67,7 +67,7 @@ ______
 
 **4)** Como você criaria um método `acelerar()` em uma classe `Carro`, que recebe um parâmetro `velocidade` e o adiciona a um atributo `velocidadeAtual`?
 
-A) ![Uma imagem](assets/ex04_1.PNG)
+A) **![Uma imagem](assets/ex04_1.PNG)** //Correta
 
 B) ![Uma imagem](assets/ex04_2.PNG)
 
@@ -79,7 +79,7 @@ ______
 
 **5)** Qual a forma correta de definir uma classe Carro em JavaScript, com um método ligar() e um atributo marca?
 
-A) ![Uma imagem](assets/ex05_1.PNG)
+A) **![Uma imagem](assets/ex05_1.PNG)** // correta
 
 B) ![Uma imagem](assets/ex05_2.PNG)
 
@@ -95,7 +95,7 @@ ______
 
 Qual será a saída do código acima?
 
-A) "Olá, meu nome é João. Olá, meu nome é Maria."
+A) **"Olá, meu nome é João. Olá, meu nome é Maria."** //Correta
 
 B) "Olá, meu nome é ."
 
@@ -119,6 +119,28 @@ Criando e manipulando Animais:
 - Para cada animal, chame o método descrever() para ver a descrição no console.
 
 Dica: Utilize `console.log()` para exibir as informações!
+
+## Resposta
+
+```javascript
+class Animal {
+    constructor(name, idade){
+        this.name = name
+        this.idade = idade
+    }
+
+    descrever() {
+        console.log(`Esta é a ${this.name}, que tem ${this.idade} anos de idade.`)
+    }
+}
+
+const cachorro = new Animal('Meggie', 9)
+const gato = new Animal('Luna', 12)
+
+cachorro.descrever()
+gato.descrever()
+
+```
 
 ______
 
@@ -145,6 +167,40 @@ Chamando os Métodos:
 
 Dica: Utilize console.log() para exibir as informações!
 
+## Resposta
+
+```javascript
+class Animal {
+    constructor(name, idade){
+        this.name = name
+        this.idade = idade
+    }
+
+    descrever() {
+        console.log(`Esta é a ${this.name}, que tem ${this.idade} anos de idade.`)
+    }
+}
+
+class Gato extends Animal {
+    constructor(nome, idade, cor) {
+        super(nome, idade)
+        this.cor = cor
+    }
+
+    miar() {
+        console.log('Mimiau')
+    }
+
+}
+
+const cachorro = new Animal('Meggie', 9)
+const gagato = new Gato('Luna', 12) //gagato, pois é um gato gago
+
+cachorro.descrever()
+gagato.descrever()
+gagato.miar()
+```
+
 
 ______
 
@@ -167,6 +223,30 @@ Chamando o Método para Ver o Total:
 
 Dica: Utilize console.log() para exibir as informações!
 
+## Resposta
+
+```javascript
+class SomadorDeNotas{
+    constructor(total){
+        this.total = 0
+    }
+
+    adicionarNota(nota){
+        this.total += nota
+    }
+
+    verTotal(){
+        console.log(`A soma de notas 1 e 2 é de ${this.total} pontos`)
+    }
+}
+
+var somador = new SomadorDeNotas()
+
+somador.adicionarNota(9)
+somador.adicionarNota(7)
+
+somador.verTotal()
+```
 
 ______
 
@@ -188,3 +268,39 @@ Agora, sua tarefa é escrever um código em JavaScript que crie as classes Funci
 - Para cada objeto, chame o método calcularSalario() e mostre o salário calculado no console.
 
 Certifique-se de explicar cada parte do código utilizando comentários, explicando para que serve cada atributo e método, bem como a lógica por trás do cálculo de salário para o tipo de funcionário Professor.
+
+## Resposta
+
+```javascript
+class Funcionario{ // Define a classe Funcionario
+    constructor(nome,idade,salarioBase){ // Define o construtor da classe Funcionario com parâmetros nome, idade e salarioBase
+        this.nome = nome // Adiciona o atributo nome com o valor passado como parâmetro
+        this.idade = idade // Adiciona o atributo idade com o valor passado como parâmetro
+        this.salarioBase = salarioBase // Adiciona o atributo salarioBase com o valor passado como parâmetro
+    }
+
+    calcularSalario(){ // Define o método calcularSalario da classe Funcionario
+        return this.salarioBase // Retorna o valor do atributo salarioBase
+    }
+}
+
+class Professor extends Funcionario{ // Define a classe Professor que herda da classe Funcionario
+    constructor(nome, idade, salarioBase, disciplina, horasAulaSemana, salarioTotal){ // Define o construtor da classe Professor com parâmetros nome, idade, salarioBase, disciplina, horasAulaSemana e salarioTotal
+        super(nome, idade, salarioBase) // Chama o construtor da classe pai (Funcionario) passando os parâmetros correspondentes
+        this.disciplina = disciplina // Inicializa o atributo disciplina com o valor passado como parâmetro
+        this.horasAulaSemana = horasAulaSemana // Inicializa o atributo horasAulaSemana com o valor passado como parâmetro
+        this.salarioTotal = salarioTotal // Inicializa o atributo salarioTotal com o valor passado como parâmetro
+    }
+
+    calcularSalario(){ // Define o método calcularSalario da classe Professor
+        this.salarioTotal = this.horasAulaSemana * 500 * 4 // Calcula o salarioTotal baseado no número de horas de aula por semana
+        console.log(`O nome do professor de ${this.disciplina} é ${this.nome}, seu salário é de R$${(this.salarioTotal + this.salarioBase).toFixed(2)} por mês. Ele tem ${this.idade} anos de idade e trabalha ${this.horasAulaSemana} horas por semana.`) // Dá informações sobre o professor, incluindo o salário total calculado
+    }
+}
+
+let professor01 = new Professor('Egon', 40, 10000, 'Negócios', 40 , 0) // Cria uma instância (objeto) da classe Professor com os parâmetros especificados
+let professor02 = new Professor('Cris', 18, 150000, 'Programação', 500, 0) // Cria outra instância (objeto) da classe Professor com os parâmetros especificados
+
+professor01.calcularSalario() // Chama o método calcularSalario para o professor01
+professor02.calcularSalario() // Chama o método calcularSalario para o professor02
+```
